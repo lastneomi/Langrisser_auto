@@ -164,7 +164,7 @@ namespace MacroLangrisser
             PostMessage(hw2, (int)WMessages.WM_LBUTTONDOWN, 1, MakeLParam(x, y - title_Y ));
             Delay(100);
             PostMessage(hw2, (int)WMessages.WM_LBUTTONUP, 0, MakeLParam(x, y - title_Y));
-            Delay(1000);
+            Delay(500);
         }
 
         //이미지 저장 함수
@@ -219,7 +219,7 @@ namespace MacroLangrisser
         }
 
         //비교용 이미지 캡쳐 함수
-        public void Capt()
+        public int Capt()
         {
             try
             {
@@ -244,13 +244,16 @@ namespace MacroLangrisser
                         new SolidBrush(Color.Gray),
                         new Rectangle(Point.Empty, Image_temp.Size));
                     textBox1.Text += "[Error]캡쳐 \r\n";
+                    gfxBmp.Dispose();
+                    return 0;
                 }
                 gfxBmp.Dispose();
-
+                return 1;
             }
             catch (Exception e)
             {
                 textBox1.Text += "[Error]캡쳐 \r\n";
+                return 0;
             }
         }
 
@@ -357,7 +360,7 @@ namespace MacroLangrisser
             // Capt_file(670, 160, 100, 40);
 
             //대사 스킵
-             Capt_file(1100, 825, 40, 40);
+            Capt_file(1100, 825, 40, 40);
 
         }
 
@@ -378,7 +381,8 @@ namespace MacroLangrisser
                     break;
                 }
 
-                Capt();
+                if(Capt() == 0)
+                    break;
                 cutImgfile = cutImg(1485, 175, 35, 55);
 
                 //사건 열기
@@ -505,7 +509,7 @@ namespace MacroLangrisser
                 }
 
                 //대화 스킵2
-                cutImgfile = cutImg(1100, 825, 40, 40);
+                cutImgfile = cutImg(1000, 825, 40, 40);
                 item = Library.imgList[20];
                 if (Library.imgComp(cutImgfile, item) == 1)
                 {
@@ -573,7 +577,8 @@ namespace MacroLangrisser
                     break;
                 }
 
-                Capt();
+                if (Capt() == 0)
+                    break;
                 //2p 입장
                 cutImgfile = cutImg(605, 360, 50, 40);
                 var item = Library.imgList[15];
