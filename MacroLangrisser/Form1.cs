@@ -129,6 +129,8 @@ namespace MacroLangrisser
             new statusList { imgName = Resources._3p, returnCount = 16, Des = "3P 입장" },
             new statusList { imgName = Resources.fight, returnCount = 17, Des = "전투 시작" },
             new statusList { imgName = Resources.confirm, returnCount = 18, Des = "다시 초대 확인" },
+            new statusList { imgName = Resources.point, returnCount = 19, Des = "포인트 정산" },
+            new statusList { imgName = Resources.talk_skip, returnCount = 20, Des = "대화_스킵" },
             };
         }
 
@@ -160,7 +162,7 @@ namespace MacroLangrisser
             IntPtr hw2 = FindWindowEx(hw1, IntPtr.Zero, null, childBlueStackName);
 
             PostMessage(hw2, (int)WMessages.WM_LBUTTONDOWN, 1, MakeLParam(x, y - title_Y ));
-            Delay(50);
+            Delay(100);
             PostMessage(hw2, (int)WMessages.WM_LBUTTONUP, 0, MakeLParam(x, y - title_Y));
             Delay(1000);
         }
@@ -274,9 +276,9 @@ namespace MacroLangrisser
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //System.Diagnostics.Process[] mProcess = System.Diagnostics.Process.GetProcessesByName(Application.ProductName);
-            //foreach (System.Diagnostics.Process p in mProcess)
-            //    p.Kill();
+            System.Diagnostics.Process[] mProcess = System.Diagnostics.Process.GetProcessesByName(Application.ProductName);
+            foreach (System.Diagnostics.Process p in mProcess)
+                p.Kill();
         }
 
         //테스트
@@ -301,7 +303,7 @@ namespace MacroLangrisser
             //Capt_file(890, 650, 75, 45);
 
             //공격
-            Capt_file(1415, 830, 95, 50);
+            // Capt_file(1415, 830, 95, 50);
 
             //자동
             //Capt_file(1475, 340, 45, 25);
@@ -313,7 +315,7 @@ namespace MacroLangrisser
             //Capt_file(360, 700, 40, 15);
 
             //사건 정산
-            // Capt_file(785, 235, 95, 50);
+            //Capt_file(785, 235, 95, 50);
 
             //보물상자
             //Capt_file(710, 410, 100, 100);
@@ -351,7 +353,11 @@ namespace MacroLangrisser
             //대화 스킵
             //Capt_file(1150, 730, 60, 50);
 
+            //포인트 정산
+            // Capt_file(670, 160, 100, 40);
 
+            //대사 스킵
+             Capt_file(1100, 825, 40, 40);
 
         }
 
@@ -409,7 +415,6 @@ namespace MacroLangrisser
                     }
                     //두번째 칸
                     else if (Library.imgComp(cutImg(1035, 338, 75, 70), item) != 1)
-                    
                     {
                         clickSend(1045, 348);
 
@@ -490,6 +495,18 @@ namespace MacroLangrisser
                 //대화 스킵
                 cutImgfile = cutImg(1150, 730, 60, 50);
                 item = Library.imgList[9];
+                if (Library.imgComp(cutImgfile, item) == 1)
+                {
+                    clickSend(730, 800);
+
+                    textBox1.Text += item.Des
+                                  + DateTime.Now.ToString("HHmmss")
+                                  + "\r\n";
+                }
+
+                //대화 스킵2
+                cutImgfile = cutImg(1100, 825, 40, 40);
+                item = Library.imgList[20];
                 if (Library.imgComp(cutImgfile, item) == 1)
                 {
                     clickSend(730, 800);
@@ -612,12 +629,36 @@ namespace MacroLangrisser
                                   + "\r\n";
                 }
 
+                //대화 스킵2
+                cutImgfile = cutImg(1100, 825, 40, 40);
+                item = Library.imgList[20];
+                if (Library.imgComp(cutImgfile, item) == 1)
+                {
+                    clickSend(730, 800);
+
+                    textBox1.Text += item.Des
+                                  + DateTime.Now.ToString("HHmmss")
+                                  + "\r\n";
+                }
+
                 //사건 정산
                 cutImgfile = cutImg(785, 235, 95, 50);
                 item = Library.imgList[11];
                 if (Library.imgComp(cutImgfile, item) == 1)
                 {
                     clickSend(785, 235);
+
+                    textBox1.Text += item.Des
+                                  + DateTime.Now.ToString("HHmmss")
+                                  + "\r\n";
+                }
+
+                //포인트 정산
+                cutImgfile = cutImg(670, 160, 100, 40);
+                item = Library.imgList[19];
+                if (Library.imgComp(cutImgfile, item) == 1)
+                {
+                    clickSend(1400, 600);
 
                     textBox1.Text += item.Des
                                   + DateTime.Now.ToString("HHmmss")

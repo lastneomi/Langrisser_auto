@@ -213,6 +213,16 @@ namespace MacroLangrisser.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap point {
+            get {
+                object obj = ResourceManager.GetObject("point", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap posion {
             get {
                 object obj = ResourceManager.GetObject("posion", resourceCulture);
@@ -236,6 +246,16 @@ namespace MacroLangrisser.Properties {
         internal static System.Drawing.Bitmap talk {
             get {
                 object obj = ResourceManager.GetObject("talk", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap talk_skip {
+            get {
+                object obj = ResourceManager.GetObject("talk_skip", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
