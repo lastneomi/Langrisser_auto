@@ -382,7 +382,7 @@ namespace MacroLangrisser
                 }
 
                 if(Capt() == 0)
-                    break;
+                    continue;
                 cutImgfile = cutImg(1485, 175, 35, 55);
 
                 //사건 열기
@@ -578,7 +578,7 @@ namespace MacroLangrisser
                 }
 
                 if (Capt() == 0)
-                    break;
+                    continue;
                 //2p 입장
                 cutImgfile = cutImg(605, 360, 50, 40);
                 var item = Library.imgList[15];
@@ -635,7 +635,7 @@ namespace MacroLangrisser
                 }
 
                 //대화 스킵2
-                cutImgfile = cutImg(1100, 825, 40, 40);
+                cutImgfile = cutImg(1000, 825, 40, 40);
                 item = Library.imgList[20];
                 if (Library.imgComp(cutImgfile, item) == 1)
                 {
